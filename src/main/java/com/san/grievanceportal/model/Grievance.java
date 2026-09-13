@@ -1,9 +1,7 @@
 package com.san.grievanceportal.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 import jakarta.validation.constraints.NotBlank;
@@ -25,7 +23,10 @@ public class Grievance {
     @NotBlank(message = "Please describe your issue...")
     private String description;
 
-    @NotBlank
-    private String status;
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private GrievanceStatus status;
+
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }
